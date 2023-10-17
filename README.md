@@ -32,7 +32,7 @@
 
 ### Association
 - belongs_to :user
-- has_one :histories
+- has_one :history
 
 ## histories テーブル
 
@@ -55,8 +55,8 @@
 | city                    | string    | null :false                    |
 | address                 | string    | null :false                    |
 | building_name           | string    |                                |
-| histories               | reference | null :false, foreign_key: true |
+| history               | reference | null :false, foreign_key: true |
 | telephone               | string    | null :false                    |
 
 ### Association
-- belongs_to :histories
+- belongs_to :history
