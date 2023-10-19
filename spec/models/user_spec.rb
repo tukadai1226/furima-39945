@@ -36,6 +36,7 @@ RSpec.describe User, type: :model do
       it '重複したemailが存在する場合は登録できない' do
         @user.save
         another_user = FactoryBot.build(:user)
+        another_user.email = @user.email
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
@@ -56,6 +57,18 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include ("Password is invalid")
       end
+      it '英字のみのパスワードでは登録できない' do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include ("Password is invalid")
+      end
+      it '数字のみのパスワードでは登録できない' do
+        @user.password = "111111"
+        @user.password_confirmation = '111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include ("Password is invalid")
+      end
       it '名字が空では登録できない' do
         @user.family_name = ''
         @user.valid?
@@ -65,6 +78,16 @@ RSpec.describe User, type: :model do
         @user.first_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+      it '名字に半角文字が含まれていると登録できない' do
+        @user.family_name = 'あいうえa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name is invalid")
+      end
+      it '名前に半角文字が含まれていると登録できない' do
+        @user.first_name = 'あいうえa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
       end
       it '名字のカナが空では登録できない' do
         @user.family_name_kana = ''
