@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_104326) do
     t.integer "burden_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "estimated_shopping_date_id", null: false
-    t.integer "prece", null: false
+    t.integer "price", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

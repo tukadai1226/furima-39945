@@ -11,16 +11,16 @@ class Item < ApplicationRecord
   belongs_to :estimated_shopping_date
 
   NUM_REGEX = /\A[0-9]+\z/
-  validates :prece, format: { with: NUM_REGEX }, numericality: {greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999}
+  validates :price, format: { with: NUM_REGEX }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
-  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :burden_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :estimated_shopping_date_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :burden_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :estimated_shopping_date_id, numericality: { other_than: 1, message: "can't be blank" }
 
   validates :item, presence: true, length: { maximum: 40 }
   validates :explanation, presence: true, length: { maximum: 1000 }
   validates :image, presence: true
-  validates :prece, presence: true
+  validates :price, presence: true
 end
