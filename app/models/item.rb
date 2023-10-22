@@ -10,7 +10,6 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :estimated_shopping_date
 
-
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :burden_id, numericality: { other_than: 1, message: "can't be blank" }
@@ -20,5 +19,6 @@ class Item < ApplicationRecord
   validates :item, presence: true, length: { maximum: 40 }
   validates :explanation, presence: true, length: { maximum: 1000 }
   validates :image, presence: true
-  validates :price, presence: true ,numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }
+  validates :price, presence: true,
+                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }
 end
