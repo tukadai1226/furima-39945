@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="1e3QdUBDXhT0_0Xv4sBH" name="ページ1">
-        <mxGraphModel dx="1294" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1112" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -96,7 +96,7 @@
                 <mxCell id="36" value="telephone(string型, NOT NULL)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="23" vertex="1">
                     <mxGeometry y="176" width="310" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="50" value="histories(references型, NOT NULL,外部キー)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="23" vertex="1">
+                <mxCell id="50" value="history(references型, NOT NULL,外部キー)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="23" vertex="1">
                     <mxGeometry y="206" width="310" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="45" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="20" target="26" edge="1">
