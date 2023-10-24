@@ -1,0 +1,2 @@
+module HistriesHelper
+end
