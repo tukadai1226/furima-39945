@@ -20,3 +20,4 @@ class AddressHistory
     # 住所を保存する
     ShoppingAddress.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, telephone: telephone, history_id: history.id)
 end
+end
