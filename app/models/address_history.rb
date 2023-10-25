@@ -11,7 +11,6 @@ class AddressHistory
     validates :city
     validates :address
     validates :telephone
-    validates :history
   end
 
   def save
