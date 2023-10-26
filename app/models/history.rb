@@ -1,5 +1,5 @@
 class History < ApplicationRecord
   belongs_to :user
-  belongs_to :Item
-  has_one :shopping_addresses
+  belongs_to :item
+  has_one :shopping_address
 end
