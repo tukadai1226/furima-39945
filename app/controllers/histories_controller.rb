@@ -1,10 +1,10 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :move_to_index, only: [:index]
+  before_action :set_item, only: [:index, ]
+  before_action :move_to_index, only: [:index, :create, :pay_item, :move_to_index]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
     @address_history = AddressHistory.new
   end
 
@@ -16,7 +16,6 @@ class HistoriesController < ApplicationController
       redirect_to root_path
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-      @item = Item.find(params[:item_id])
       render :index, status: :unprocessable_entity
     end
   end
@@ -28,18 +27,20 @@ class HistoriesController < ApplicationController
   end
 
   def pay_item
-    item = Item.find(params[:item_id])
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: item.price,
+      amount: @item.price,
       card: history_params[:token],
       currency: 'jpy'
     )
   end
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def move_to_index
-    item = Item.find(params[:item_id])
-    if current_user.id == item.user_id || item.history != nil
+    if current_user.id == @item.user_id || @item.history != nil
     redirect_to items_path
     end
   end
