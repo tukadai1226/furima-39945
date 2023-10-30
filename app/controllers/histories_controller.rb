@@ -1,8 +1,7 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :set_item, only: [:index]
-  before_action :move_to_index, only: [:index, :create, :pay_item, :move_to_index]
-
+  before_action :set_item, only: [:index, :create, :pay_item, :move_to_index]
+  before_action :move_to_index, only: [:index]
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @address_history = AddressHistory.new
@@ -42,8 +41,8 @@ class HistoriesController < ApplicationController
   end
 
   def move_to_index
-    return unless current_user.id == @item.user_id || !@item.history.nil?
-
-    redirect_to items_path
+    unless current_user.id != @item.user_id && @item.history == nil
+            redirect_to items_path
+    end
   end
 end
